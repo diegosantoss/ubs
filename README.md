@@ -1,5 +1,5 @@
 Clonar o repositorio do github com o seguinte comando:
-git clone 
+git clone https://github.com/diegosantoss/ubs.git
 
 Entrar na pasta do projeto e rodar o seguinte comando:
 npm install
