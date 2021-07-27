@@ -16,7 +16,7 @@ const Products = () => {
     origin: ''
   });
 
-  const {products} = useSelector((state) => state);
+  const { products } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,16 +26,16 @@ const Products = () => {
   }, []);
 
   useEffect(() => {
-      dispatch(searchProducts(fields));
-      setListProducts([]);
-  },[fields])
+    dispatch(searchProducts(fields));
+    setListProducts([]);
+  }, [fields])
 
-  function moreProducts(){
-    setTimeout( () => {
+  function moreProducts() {
+    setTimeout(() => {
       let start = 0;
       let end;
 
-      if (products.list.length > 50){
+      if (products.list.length > 50) {
         start = listProducts.length;
         end = start + 50;
         setHasMore(true)
@@ -58,7 +58,7 @@ const Products = () => {
       <div>Loading Products ...</div>
     )
   } else {
-    if(listProducts.length === 0){
+    if (listProducts.length === 0) {
       moreProducts();
     }
 
@@ -67,10 +67,10 @@ const Products = () => {
         <section className="search-container">
           <section className="search-content">
             <section className="search-item">
-              <p>Product: <input value={fields.product} onChange={text => setFields({ ...fields, product: text.target.value }) }/></p>
+              <p>Product: <input value={fields.product} onChange={text => setFields({ ...fields, product: text.target.value })} /></p>
             </section>
             <section className="search-item">
-              <p>Origin: <input value={fields.origin} onChange={text => setFields({ ...fields, origin: text.target.value }) } /></p>
+              <p>Origin: <input value={fields.origin} onChange={text => setFields({ ...fields, origin: text.target.value })} /></p>
             </section>
           </section>
         </section>
@@ -80,16 +80,16 @@ const Products = () => {
         ) : ''}
 
         <section className="cards-container">
-        <InfiniteScroll
-          dataLength={ listProducts.length}
-          next={moreProducts}
-          hasMore={hasMore}
-        >
-          {listProducts.map((product, index) => (
-            <Card key={index} card={product}/>
-          ))}
-        </InfiniteScroll>
-      </section>
+          <InfiniteScroll
+            dataLength={listProducts.length}
+            next={moreProducts}
+            hasMore={hasMore}
+          >
+            {listProducts.map((product, index) => (
+              <Card key={index} card={product} />
+            ))}
+          </InfiniteScroll>
+        </section>
       </React.Fragment>
     );
 
